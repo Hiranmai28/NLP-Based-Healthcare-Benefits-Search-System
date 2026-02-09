@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+env/
+
+# Data files - DO NOT UPLOAD
+data/
+*.pdf
+*.npy
+*.pkl
+*.index
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.DS_Store
