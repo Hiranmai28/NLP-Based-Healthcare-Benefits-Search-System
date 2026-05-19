@@ -8,7 +8,7 @@ An AI-powered semantic search system to help users understand and compare health
 
 ## 🌟 Live Demo
 
-🔗 **[Try the Live App](https://your-app-name.streamlit.app)** _(Add your URL after deployment)_
+🔗 **[Try the Live App](https://nlp-based-healthcare-benefits-search-system-egxizkkqbzg62ogmtu.streamlit.app/)**
 
 ## 📖 Overview
 
