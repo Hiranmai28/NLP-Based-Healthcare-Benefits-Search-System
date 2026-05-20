@@ -179,13 +179,13 @@ class PDFExtractor:
         return filepath
 
 
-def extract_all_pdfs(input_dir: str = "data/dummy_dataset"):
+def extract_all_pdfs(input_dir: str = "data/Insurance_dataset"):
     """Process all PDFs in directory"""
     input_path = Path(input_dir)
     pdf_files = list(input_path.glob("*.pdf"))
     
     if not pdf_files:
-        print("❌ No PDF files found in data/dummy_dataset/")
+        print("❌ No PDF files found in data/Insurance_dataset/")
         print("   Please run generate_dummy_data.py first!")
         return []
     

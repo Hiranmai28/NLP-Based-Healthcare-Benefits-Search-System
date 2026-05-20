@@ -74,15 +74,9 @@ class EmbeddingGenerator:
         """
         print("🔨 Building FAISS search index...")
         
-        # Use HNSW (Hierarchical Navigable Small World) index
-        # - Fast approximate search
-        # - Good quality results
-        # - Works well for 1K - 1M vectors
-        
-        index = faiss.IndexHNSWFlat(self.dimension, 32)
-        index.hnsw.efConstruction = 40  # Higher = better quality, slower build
-        index.hnsw.efSearch = 16  # Higher = better search quality
-        
+        # Use flat index (exact search, reliable for small datasets)
+        index = faiss.IndexFlatIP(self.dimension)
+
         # Add embeddings to index
         print(f"   Adding {len(embeddings)} vectors to index...")
         index.add(embeddings.astype('float32'))
@@ -127,7 +121,7 @@ class EmbeddingGenerator:
             'total_chunks': len(chunks),
             'embedding_dimension': self.dimension,
             'model_name': 'all-MiniLM-L6-v2',
-            'index_type': 'HNSW',
+            'index_type': 'FlatIP',
             'plans': list(set(c.get('plan_name', 'Unknown') for c in chunks)),
             'categories': list(set(c.get('category', 'unknown') for c in chunks)),
             'total_plans': len(set(c.get('plan_name', 'Unknown') for c in chunks))
