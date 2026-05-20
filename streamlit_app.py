@@ -52,10 +52,27 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
+# Auto-build pipeline if index doesn't exist (needed on Streamlit Cloud cold start)
+@st.cache_resource
+def setup_pipeline():
+    import os
+    if not os.path.exists("data/index/benefits.index"):
+        with st.spinner("First-time setup: building search index (1-2 min)..."):
+            from src.data_processing.generate_dummy_data import DummyDataGenerator
+            from src.data_processing.pdf_extractor import extract_all_pdfs
+            from src.data_processing.chunker import BenefitChunker
+            from src.models.embedding_generator import build_search_index
+            DummyDataGenerator().generate_all()
+            extract_all_pdfs()
+            BenefitChunker().process_all()
+            build_search_index()
+
+
 # Initialize retriever
 @st.cache_resource
 def load_retriever():
     """Load retriever (cached for performance)"""
+    setup_pipeline()
     return BenefitRetriever()
 
 
