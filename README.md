@@ -11,7 +11,7 @@ An AI-powered semantic search system to help users understand and compare health
 
 ## 🌟 Live Demo
 
-🔗 **[Try the Live App](https://nlp-based-healthcare-benefits-search-system-egxizkkqbzg62ogmtu.streamlit.app/)**
+🔗 **[Try the Live App](http://localhost:8501/)**
 
 ---
 
